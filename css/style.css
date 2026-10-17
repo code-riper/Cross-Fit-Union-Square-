@@ -1,36 +1,27 @@
 @charset "UTF-8";
-
-/* 1. ROOT VARIABLES — MOBILE FIRST */
-
 :root {
     /* Colors */
     --color-background: #090b0f;
     --color-surface: #11151c;
     --color-surface-raised: #191f29;
     --color-surface-hover: #222b38;
-
     --color-accent: #2684ff;
     --color-accent-hover: #0e6be8;
     --color-accent-soft: rgba(38, 132, 255, 0.14);
-
     --color-text-primary: #f7f9fc;
     --color-text-secondary: #b7c0cd;
     --color-text-muted: #8c97a6;
-
     --color-border: rgba(255, 255, 255, 0.14);
     --color-border-strong: rgba(255, 255, 255, 0.26);
-
     --color-light-background: #f4f6f9;
     --color-light-surface: #ffffff;
     --color-light-text: #171b22;
     --color-light-muted: #4f5967;
-
     --color-overlay: rgba(5, 8, 13, 0.58);
     --color-overlay-strong: rgba(5, 8, 13, 0.78);
 
     /* Typography */
     --font-family-base: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
     --font-size-xs: 0.8rem;
     --font-size-sm: 0.9rem;
     --font-size-base: 1rem;
@@ -38,12 +29,10 @@
     --font-size-xl: 1.35rem;
     --font-size-2xl: 1.8rem;
     --font-size-3xl: 2.5rem;
-
     --font-weight-regular: 400;
     --font-weight-medium: 600;
     --font-weight-bold: 700;
     --font-weight-black: 900;
-
     --line-height-body: 1.7;
     --line-height-heading: 1.08;
 
@@ -71,18 +60,14 @@
     /* Components */
     --header-height: 72px;
     --logo-width: 74px;
-
     --hero-min-height: 470px;
     --hero-height: 76svh;
-
     --training-image-height: 300px;
     --gallery-image-height: 150px;
     --map-height: 300px;
-
     --button-min-height: 50px;
     --size-carousel-control: 70px;
 
-    /* Borders and effects */
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 20px;
@@ -95,7 +80,7 @@
     --transition-standard: 280ms ease;
 }
 
-   /* 2. RESET AND GLOBAL  */
+   /* Reset and global defaults */
 
 *,
 *::before,
@@ -130,7 +115,7 @@ a {
     text-decoration: none;
 }
 
-button, input, textarea, select { 
+button {
     font: inherit;
 }
 
@@ -144,20 +129,13 @@ p {
     margin-top: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--color-text-primary);
-    line-height: var(--line-height-heading);
-}
-
+/* Accessibility */
 :focus-visible {
     outline: 3px solid var(--color-accent);
     outline-offset: 4px;
 }
 
-
-/* =====================================================
-   3. HEADER AND DESKTOP NAVIGATION
-===================================================== */
+   /* Header and navigation */
 
 .site-header {
     position: relative;
@@ -165,7 +143,6 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--color-background);
 }
 
-/* Matches the actual .container inside .site-header */
 .site-header > .container {
     min-height: var(--header-height);
     gap: var(--space-4);
@@ -179,7 +156,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .site-logo img {
-    display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -209,7 +185,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .desktop-navigation-link.membership-link {
     min-height: 46px;
-    padding: var(--space-2) var(--space-4);
+    padding: var(--space-2) var(--space-3);
     border: 1px solid var(--color-accent);
     border-radius: var(--radius-sm);
     background: var(--color-accent);
@@ -218,15 +194,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .desktop-navigation-link.membership-link:hover {
-    transform: translateY(-2px);
     border-color: var(--color-accent-hover);
     background: var(--color-accent-hover);
     color: #ffffff;
+    transform: translateY(-2px);
 }
 
-/* 4. MOBILE MENU  */
-
-.mobile-menu-button, .mobile-navigation-close {
+.mobile-menu-button,
+.mobile-navigation-close {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -247,6 +222,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--color-accent-soft);
 }
 
+/* Hamburger */
 .hamburger-icon {
     display: flex;
     flex-direction: column;
@@ -258,10 +234,10 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     width: 100%;
     height: 2px;
-    background: currentColor;
+    background-color: currentColor;
 }
 
-   /* 5. HERO  */
+   /* Hero section */
 
 .hero-section {
     position: relative;
@@ -271,9 +247,7 @@ h1, h2, h3, h4, h5, h6 {
     height: var(--hero-height);
     overflow: hidden;
     background-color: var(--color-surface);
-    background-image:
-        linear-gradient( 90deg, rgba(5, 8, 13, 0.82) 0%, rgba(5, 8, 13, 0.55) 52%, rgba(5, 8, 13, 0.28) 100%),
-        linear-gradient( 0deg, rgba(5, 8, 13, 0.52), transparent 55%), url("../images/bg-image/images.avif");
+    background-image: linear-gradient(90deg, rgba(5, 8, 13, 0.82) 0%, rgba(5, 8, 13, 0.55) 52%, rgba(5, 8, 13, 0.28) 100%), linear-gradient(0deg, rgba(5, 8, 13, 0.52), transparent 55%), url("../images/bg-image/images.avif");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -291,8 +265,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-text {
-    width: 100%;
-    max-width: 980px;
+    width: min(100%, 980px);
     text-align: left;
 }
 
@@ -312,7 +285,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: var(--font-weight-black);
     line-height: var(--line-height-heading);
     letter-spacing: -0.045em;
-    overflow-wrap: break-word;
+    text-wrap: balance;
 }
 
 .hero-buttons {
@@ -351,13 +324,15 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--color-accent-hover);
 }
 
-.hero-button-primary-link, .hero-button-primary-link:hover {
+.hero-button-primary-link,
+.hero-button-primary-link:hover {
     color: #ffffff;
 }
 
 .hero-button-secondary {
     border-color: rgba(255, 255, 255, 0.75);
     background: rgba(9, 11, 15, 0.34);
+    backdrop-filter: blur(8px);
 }
 
 .hero-button-secondary:hover {
@@ -365,11 +340,12 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--color-accent-soft);
 }
 
-.hero-button-secondary-link, .hero-button-secondary-link:hover {
+.hero-button-secondary-link,
+.hero-button-secondary-link:hover {
     color: #ffffff;
 }
 
-   /* 6. MOBILE OFFCANVAS  */
+   /* Mobile navigation panel */
 
 #mobile-navigation {
     height: min(100vh, 760px);
@@ -380,11 +356,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-navigation .offcanvas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     min-height: var(--header-height);
     padding: var(--space-4) var(--container-inline-space);
     border-bottom: 1px solid var(--color-border);
-    display: flex ;
-    justify-content: space-between;
 }
 
 #mobile-navigation .offcanvas-body {
@@ -439,7 +416,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
 }
 
-/* 7. TRAINING FEATURE  */
+   /* Training feature  */
 
 .training-section {
     padding-top: var(--section-padding-y);
@@ -457,7 +434,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .training-card-image {
-    display: block;
     width: 100%;
     height: var(--training-image-height);
     border: 1px solid var(--color-border);
@@ -481,45 +457,39 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--space-5);
     padding: var(--space-5);
     border-radius: var(--radius-lg);
-    background: linear-gradient( 180deg, rgba(5, 8, 13, 0.18) 0%, rgba(5, 8, 13, 0.55) 48%, rgba(5, 8, 13, 0.82) 100%);
+    background: linear-gradient(180deg, rgba(5, 8, 13, 0.18) 0%, rgba(5, 8, 13, 0.55) 48%, rgba(5, 8, 13, 0.82) 100%);
     text-align: center;
 }
 
 .training-card-overlay h2 {
     margin: 0;
     color: #ffffff;
-    font-size: 2.1rem;
+    font-size: 2rem;
     font-weight: var(--font-weight-black);
     line-height: 1.05;
     letter-spacing: -0.025em;
-    font-style: italic;
     text-transform: uppercase;
+    font-style: italic;
+    text-wrap: balance;
 }
 
-.training-card-overlay .btn {
-    white-space: normal;
-}
-
-   /* 8. TESTIMONIAL  */
+   /* Testimonials carousel */
 
 .testimonials-section {
     padding: var(--section-padding-y) 0;
-    background: radial-gradient( ellipse at 50% 0%, rgba(38, 132, 255, 0.1), transparent 55%), var(--color-surface);
+    background: radial-gradient(ellipse at 50% 0%, rgba(38, 132, 255, 0.1), transparent 55%), var(--color-surface);
 }
 
 #testimonialCarousel {
     width: 100%;
     max-width: 920px;
-    margin-inline: auto;
+    margin: 0 auto;
+    padding-bottom: var(--space-8);
 }
 
 #testimonialCarousel .carousel-inner {
     overflow: hidden;
     border-radius: var(--radius-lg);
-}
-
-#testimonialCarousel .carousel-item {
-    height: 100%;
 }
 
 .testimonial-card {
@@ -552,10 +522,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: var(--font-weight-bold);
 }
 
-/*
-   FUTURE USE — TESTIMONIAL CAROUSEL ARROWS
-
-   Keep commented until you add or enable custom arrows.
+/* Carousel arrow styling — kept for future use.
+   Remove the comment markers to enable these styles.
 
 #testimonialCarousel .carousel-control-prev,
 #testimonialCarousel .carousel-control-next {
@@ -569,9 +537,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--color-surface-raised);
     opacity: 1;
     transform: none;
-    transition:
-        background var(--transition-fast),
-        border-color var(--transition-fast);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 #testimonialCarousel .carousel-control-prev {
@@ -594,14 +560,14 @@ h1, h2, h3, h4, h5, h6 {
     height: 1rem;
     filter: none;
 }
-
 */
 
-   /* 9. SOCIAL MEDIA  */
+/* =========================
+   Social media gallery
+========================= */
 
 .social-gallery-section {
-    padding-top: var(--section-padding-y);
-    padding-bottom: var(--section-padding-y);
+    padding: var(--section-padding-y) 0;
     background: var(--color-light-background);
     color: var(--color-light-text);
 }
@@ -617,7 +583,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .social-gallery-heading h2 {
     position: relative;
-    margin-bottom: var(--space-4);
+    margin: 0 0 var(--space-4);
     padding-bottom: var(--space-4);
     color: var(--color-light-text);
     font-size: 2rem;
@@ -641,7 +607,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .social-gallery-heading div {
     color: var(--color-light-muted);
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
     overflow-wrap: anywhere;
 }
@@ -655,9 +621,7 @@ h1, h2, h3, h4, h5, h6 {
     height: var(--gallery-image-height);
     border-radius: var(--radius-sm);
     object-fit: cover;
-    transition:
-        transform var(--transition-standard),
-        box-shadow var(--transition-standard);
+    transition: transform var(--transition-standard), box-shadow var(--transition-standard), filter var(--transition-standard);
 }
 
 .social-gallery-images > .row > div {
@@ -670,12 +634,10 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-card);
 }
 
-
-/* 10. FOOTER */
+   /* Footer */
 
 .site-footer {
-    padding-top: var(--section-padding-y);
-    padding-bottom: var(--section-padding-y);
+    padding: var(--section-padding-y) 0;
     background: var(--color-background);
     color: var(--color-text-secondary);
 }
@@ -683,10 +645,6 @@ h1, h2, h3, h4, h5, h6 {
 .footer-layout {
     align-items: stretch;
     row-gap: var(--space-8);
-}
-
-.footer-information .row {
-    row-gap: var(--space-6);
 }
 
 .footer-heading h2 {
@@ -718,12 +676,18 @@ h1, h2, h3, h4, h5, h6 {
     overflow-wrap: anywhere;
 }
 
-/* Desktop social links */
 .social-links {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    width: 96px;
     margin-top: var(--space-5);
+}
+
+.footer-social-mobile .social-links {
+    width: 96px;
+    margin: var(--space-3) 0 0;
+    --bs-gutter-x: 0;
 }
 
 .social-link {
@@ -754,20 +718,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
 }
 
-/* Mobile social links */
-.footer-social-mobile .social-links {
-    width: 100%;
-    margin-top: var(--space-3);
-    margin-right: 0;
-    margin-left: 0;
-    row-gap: var(--space-3);
-}
-
-.footer-social-mobile .social-link {
-    display: flex;
-    justify-content: flex-start;
-}
-
 .footer-map {
     display: block;
     width: 100%;
@@ -777,23 +727,18 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--color-surface);
 }
 
-   /* 11. TABLET :  */
+   /* Tablet */
 
 @media (min-width: 768px) {
-
     :root {
         --container-inline-space: 1.25rem;
         --section-padding-y: 4rem;
         --card-gap: 1.25rem;
-
         --header-height: 80px;
         --logo-width: 82px;
-
         --font-size-3xl: 3rem;
-
         --hero-min-height: 540px;
         --hero-height: 72vh;
-
         --training-image-height: 340px;
         --gallery-image-height: 160px;
         --map-height: 340px;
@@ -809,7 +754,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero-subtitle {
-        font-size: var(--font-size-lg);
+        font-size: 1.2rem;
     }
 
     .hero-buttons {
@@ -828,7 +773,6 @@ h1, h2, h3, h4, h5, h6 {
 
     .testimonial-card {
         padding: var(--space-8);
-        min-height: 200px;
     }
 
     .testimonial-card p {
@@ -843,6 +787,10 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 2.25rem;
     }
 
+    .social-gallery-heading div {
+        font-size: var(--font-size-lg);
+    }
+
     .footer-layout {
         row-gap: var(--space-8);
     }
@@ -852,10 +800,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-   /* 12. DESKTOP NAVIGATION :  */
+   /* Desktop navigation  */
 
 @media (min-width: 992px) {
-
     :root {
         --header-height: 92px;
         --logo-width: 92px;
@@ -872,7 +819,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .desktop-navigation-link {
-        font-size: 0.82rem;
+        font-size: var(--font-size-sm);
     }
 
     .desktop-navigation-link.membership-link {
@@ -892,6 +839,10 @@ h1, h2, h3, h4, h5, h6 {
         row-gap: 0;
     }
 
+    .social-gallery-heading h2 {
+        font-size: 2.4rem;
+    }
+
     .footer-layout {
         row-gap: var(--space-6);
     }
@@ -901,17 +852,14 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-   /* 13. LARGE DESKTOP   */
+   /* Large desktop  */
 
 @media (min-width: 1200px) {
-
     :root {
         --section-padding-y: 5rem;
         --font-size-3xl: 4rem;
-
         --hero-min-height: 590px;
         --hero-height: min(82vh, 850px);
-
         --training-image-height: 380px;
         --gallery-image-height: 150px;
         --map-height: 390px;
@@ -933,19 +881,13 @@ h1, h2, h3, h4, h5, h6 {
     .training-card-overlay h2 {
         font-size: 3rem;
     }
-
-    .social-gallery-heading h2 {
-        font-size: 2.4rem;
-    }
 }
 
-
-/* =====================================================
-   15. ACCESSIBILITY — REDUCED MOTION
-===================================================== */
+/* =========================
+   Reduced motion accessibility
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
