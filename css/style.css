@@ -772,6 +772,7 @@ p {
     }
 
     .testimonial-card {
+        min-height: 200px;
         padding: var(--space-8);
     }
 
