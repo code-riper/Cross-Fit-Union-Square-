@@ -1,38 +1,49 @@
 @charset "UTF-8";
+
+/* 1. ROOT VARIABLES — MOBILE FIRST */
+
 :root {
     /* Colors */
     --color-background: #090b0f;
     --color-surface: #11151c;
     --color-surface-raised: #191f29;
     --color-surface-hover: #222b38;
+
     --color-accent: #2684ff;
     --color-accent-hover: #0e6be8;
     --color-accent-soft: rgba(38, 132, 255, 0.14);
+
     --color-text-primary: #f7f9fc;
     --color-text-secondary: #b7c0cd;
     --color-text-muted: #8c97a6;
+
     --color-border: rgba(255, 255, 255, 0.14);
     --color-border-strong: rgba(255, 255, 255, 0.26);
+
     --color-light-background: #f4f6f9;
     --color-light-surface: #ffffff;
     --color-light-text: #171b22;
     --color-light-muted: #4f5967;
+
     --color-overlay: rgba(5, 8, 13, 0.58);
     --color-overlay-strong: rgba(5, 8, 13, 0.78);
 
     /* Typography */
     --font-family-base: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
     --font-size-xs: 0.8rem;
     --font-size-sm: 0.9rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
     --font-size-xl: 1.35rem;
     --font-size-2xl: 1.8rem;
-    --font-size-3xl: 4rem;
+    --font-size-3xl: 2.5rem;
+
     --font-weight-regular: 400;
     --font-weight-medium: 600;
     --font-weight-bold: 700;
     --font-weight-black: 900;
+
     --line-height-body: 1.7;
     --line-height-heading: 1.08;
 
@@ -51,23 +62,27 @@
     --space-24: 6rem;
 
     /* Layout */
-    --container-inline-space: 1.25rem;
-    --section-padding-y: 5rem;
-    --card-gap: 1.25rem;
-    --navigation-gap: 1rem;
+    --container-inline-space: 1rem;
+    --section-padding-y: 3.5rem;
+    --card-gap: 1rem;
+    --navigation-gap: 0.75rem;
     --content-max-width: 1320px;
 
     /* Components */
-    --header-height: 92px;
-    --logo-width: 92px;
-    --hero-min-height: 590px;
-    --hero-height: min(82vh, 850px);
-    --training-image-height: 380px;
+    --header-height: 72px;
+    --logo-width: 74px;
+
+    --hero-min-height: 470px;
+    --hero-height: 76svh;
+
+    --training-image-height: 300px;
     --gallery-image-height: 150px;
-    --map-height: 390px;
-    --button-min-height: 52px;
+    --map-height: 300px;
+
+    --button-min-height: 50px;
     --size-carousel-control: 70px;
 
+    /* Borders and effects */
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 20px;
@@ -80,9 +95,7 @@
     --transition-standard: 280ms ease;
 }
 
-/* =========================
-   Reset and global defaults
-========================= */
+   /* 2. RESET AND GLOBAL  */
 
 *,
 *::before,
@@ -117,7 +130,7 @@ a {
     text-decoration: none;
 }
 
-button {
+button, input, textarea, select { 
     font: inherit;
 }
 
@@ -131,15 +144,20 @@ p {
     margin-top: 0;
 }
 
-/* Accessibility */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-primary);
+    line-height: var(--line-height-heading);
+}
+
 :focus-visible {
     outline: 3px solid var(--color-accent);
     outline-offset: 4px;
 }
 
-/* =========================
-   Header and navigation
-========================= */
+
+/* =====================================================
+   3. HEADER AND DESKTOP NAVIGATION
+===================================================== */
 
 .site-header {
     position: relative;
@@ -147,9 +165,10 @@ p {
     background: var(--color-background);
 }
 
-.site-header-inner {
+/* Matches the actual .container inside .site-header */
+.site-header > .container {
     min-height: var(--header-height);
-    gap: var(--space-6);
+    gap: var(--space-4);
 }
 
 .site-logo {
@@ -160,6 +179,7 @@ p {
 }
 
 .site-logo img {
+    display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
@@ -167,6 +187,7 @@ p {
 
 .desktop-navigation-list {
     flex-wrap: wrap;
+    align-items: center;
     justify-content: flex-end;
     gap: var(--navigation-gap);
 }
@@ -193,42 +214,39 @@ p {
     border-radius: var(--radius-sm);
     background: var(--color-accent);
     color: #ffffff;
-    transition: background var(--transition-fast),
-        border-color var(--transition-fast),
-        transform var(--transition-fast);
+    transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .desktop-navigation-link.membership-link:hover {
+    transform: translateY(-2px);
     border-color: var(--color-accent-hover);
     background: var(--color-accent-hover);
     color: #ffffff;
-    transform: translateY(-2px);
 }
 
-.mobile-menu-button,
-.mobile-navigation-close {
+/* 4. MOBILE MENU  */
+
+.mobile-menu-button, .mobile-navigation-close {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
     width: 46px;
     height: 46px;
+    padding: 0;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     background: var(--color-surface);
     color: var(--color-text-primary);
     font-size: 1.35rem;
-    transition:
-        background var(--transition-fast),
-        border-color var(--transition-fast);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
-.mobile-menu-button:hover,
-.mobile-navigation-close:hover {
+.mobile-menu-button:hover, .mobile-navigation-close:hover {
     border-color: var(--color-accent);
     background: var(--color-accent-soft);
 }
 
-/* Hamburger */
 .hamburger-icon {
     display: flex;
     flex-direction: column;
@@ -240,12 +258,10 @@ p {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: currentColor;
+    background: currentColor;
 }
 
-/* =========================
-   Hero section
-========================= */
+   /* 5. HERO  */
 
 .hero-section {
     position: relative;
@@ -256,9 +272,8 @@ p {
     overflow: hidden;
     background-color: var(--color-surface);
     background-image:
-        linear-gradient(90deg, rgba(5, 8, 13, 0.82) 0%, rgba(5, 8, 13, 0.55) 52%, rgba(5, 8, 13, 0.28) 100%),
-        linear-gradient(0deg, rgba(5, 8, 13, 0.52), transparent 55%),
-        url("../images/bg-image/images.avif");
+        linear-gradient( 90deg, rgba(5, 8, 13, 0.82) 0%, rgba(5, 8, 13, 0.55) 52%, rgba(5, 8, 13, 0.28) 100%),
+        linear-gradient( 0deg, rgba(5, 8, 13, 0.52), transparent 55%), url("../images/bg-image/images.avif");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -271,53 +286,54 @@ p {
     align-items: center;
     width: 100%;
     min-height: inherit;
-    padding-top: var(--space-12);
-    padding-bottom: var(--space-12);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-8);
 }
 
 .hero-text {
-    width: min(100%, 980px);
+    width: 100%;
+    max-width: 980px;
     text-align: left;
 }
 
 .hero-subtitle {
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-4);
     color: #dce8f8;
-    font-size: 1.2rem;
+    font-size: var(--font-size-base);
     font-weight: var(--font-weight-medium);
     letter-spacing: 0.035em;
 }
 
 .hero-title {
     max-width: 1000px;
-    margin: 0 0 var(--space-8);
+    margin: 0 0 var(--space-6);
     color: var(--color-text-primary);
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-black);
     line-height: var(--line-height-heading);
     letter-spacing: -0.045em;
-    text-wrap: balance;
+    overflow-wrap: break-word;
 }
 
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
 }
 
 .hero-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 150px;
+    min-width: 0;
     min-height: var(--button-min-height);
-    padding: var(--space-3) var(--space-6);
+    padding: var(--space-3) var(--space-4);
     border: 1px solid transparent;
     border-radius: var(--radius-sm);
     font-weight: var(--font-weight-bold);
     text-align: center;
-    transition: transform var(--transition-standard), color var(--transition-standard), background var(--transition-standard), border-color var(--transition-standard), box-shadow var(--transition-standard);        
+    transition: transform var(--transition-standard), color var(--transition-standard), background var(--transition-standard), border-color var(--transition-standard), box-shadow var(--transition-standard);
 }
 
 .hero-button:hover {
@@ -335,15 +351,13 @@ p {
     background: var(--color-accent-hover);
 }
 
-.hero-button-primary-link,
-.hero-button-primary-link:hover {
+.hero-button-primary-link, .hero-button-primary-link:hover {
     color: #ffffff;
 }
 
 .hero-button-secondary {
     border-color: rgba(255, 255, 255, 0.75);
     background: rgba(9, 11, 15, 0.34);
-    backdrop-filter: blur(8px);
 }
 
 .hero-button-secondary:hover {
@@ -351,14 +365,11 @@ p {
     background: var(--color-accent-soft);
 }
 
-.hero-button-secondary-link,
-.hero-button-secondary-link:hover {
+.hero-button-secondary-link, .hero-button-secondary-link:hover {
     color: #ffffff;
 }
 
-/* =========================
-   Mobile navigation panel
-========================= */
+   /* 6. MOBILE OFFCANVAS  */
 
 #mobile-navigation {
     height: min(100vh, 760px);
@@ -395,7 +406,7 @@ p {
     min-height: 54px;
     padding: var(--space-3) var(--space-2);
     color: var(--color-text-primary);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: var(--font-weight-bold);
     line-height: 1.3;
     transition: color var(--transition-fast), background var(--transition-fast);
@@ -419,7 +430,6 @@ p {
     border-radius: var(--radius-sm);
     background: var(--color-accent);
     color: #ffffff;
-    font-size: var(--font-size-base);
 }
 
 .mobile-navigation-membership .mobile-navigation-link:hover {
@@ -427,9 +437,7 @@ p {
     color: #ffffff;
 }
 
-/* =========================
-   Training feature cards
-========================= */
+/* 7. TRAINING FEATURE  */
 
 .training-section {
     padding-top: var(--section-padding-y);
@@ -447,6 +455,7 @@ p {
 }
 
 .training-card-image {
+    display: block;
     width: 100%;
     height: var(--training-image-height);
     border: 1px solid var(--color-border);
@@ -468,60 +477,38 @@ p {
     align-items: center;
     justify-content: center;
     gap: var(--space-5);
-    padding: var(--space-6);
+    padding: var(--space-5);
     border-radius: var(--radius-lg);
-    background: linear-gradient(180deg, rgba(5, 8, 13, 0.18) 0%, rgba(5, 8, 13, 0.55) 48%, rgba(5, 8, 13, 0.82) 100%);
+    background: linear-gradient( 180deg, rgba(5, 8, 13, 0.18) 0%, rgba(5, 8, 13, 0.55) 48%, rgba(5, 8, 13, 0.82) 100%);
     text-align: center;
 }
 
 .training-card-overlay h2 {
     margin: 0;
     color: #ffffff;
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     font-weight: var(--font-weight-black);
     line-height: 1.05;
     letter-spacing: -0.025em;
-    text-transform: uppercase;
     font-style: italic;
-    text-wrap: balance;
+    text-transform: uppercase;
 }
 
-.training-card-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: var(--button-min-height);
-    margin-top: var(--space-2);
-    padding: var(--space-3) var(--space-6);
-    border: 1px solid #ffffff;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: #ffffff;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-bold);
-    transition: background var(--transition-standard), border-color var(--transition-standard), color var(--transition-standard), transform var(--transition-standard);
+.training-card-overlay .btn {
+    white-space: normal;
 }
 
-.training-card-button:hover {
-    transform: translateY(-2px);
-    border-color: var(--color-accent);
-    background: var(--color-accent);
-    color: #ffffff;
-}
-
-/* =========================
-   Testimonials carousel
-========================= */
+   /* 8. TESTIMONIAL  */
 
 .testimonials-section {
-    padding: 5rem 0 7rem;
-    background: radial-gradient(ellipse at 50% 0%, rgba(38, 132, 255, 0.1), transparent 55%), var(--color-surface);
+    padding: var(--section-padding-y) 0;
+    background: radial-gradient( ellipse at 50% 0%, rgba(38, 132, 255, 0.1), transparent 55%), var(--color-surface);
 }
 
 #testimonialCarousel {
+    width: 100%;
     max-width: 920px;
-    margin: 0 auto;
-    padding-bottom: var(--space-12);
+    margin-inline: auto;
 }
 
 #testimonialCarousel .carousel-inner {
@@ -529,11 +516,15 @@ p {
     border-radius: var(--radius-lg);
 }
 
+#testimonialCarousel .carousel-item {
+    height: 100%;
+}
+
 .testimonial-card {
     height: 100%;
     min-height: 270px;
     margin: 0;
-    padding: var(--space-8);
+    padding: var(--space-6);
     border: 1px solid rgba(23, 27, 34, 0.08);
     border-radius: var(--radius-lg);
     background: var(--color-light-background);
@@ -542,12 +533,11 @@ p {
     text-align: center;
 }
 
-/* Styles only paragraphs inside testimonial cards */
 .testimonial-card p {
     max-width: 760px;
     margin: 0 auto;
     color: var(--color-light-text);
-    font-size: 1.1rem;
+    font-size: var(--font-size-base);
     font-weight: var(--font-weight-regular);
     line-height: 1.85;
 }
@@ -560,8 +550,10 @@ p {
     font-weight: var(--font-weight-bold);
 }
 
-/* Carousel arrow styling — kept for future use.
-   Remove the comment markers to enable these styles.
+/*
+   FUTURE USE — TESTIMONIAL CAROUSEL ARROWS
+
+   Keep commented until you add or enable custom arrows.
 
 #testimonialCarousel .carousel-control-prev,
 #testimonialCarousel .carousel-control-next {
@@ -600,44 +592,21 @@ p {
     height: 1rem;
     filter: none;
 }
+
 */
 
-.testimonial-indicators {
-    bottom: -2rem;
-    align-items: center;
-    gap: var(--space-2);
-    margin-bottom: 0;
-}
-
-.testimonial-indicators [data-bs-target] {
-    width: 7px;
-    height: 7px;
-    margin: 0;
-    border: 0;
-    border-radius: var(--radius-pill);
-    background-color: var(--color-text-muted);
-    opacity: 0.65;
-}
-
-.testimonial-indicators .active {
-    width: 22px;
-    background-color: var(--color-accent);
-    opacity: 1;
-}
-
-/* =========================
-   Social media gallery
-========================= */
+   /* 9. SOCIAL MEDIA  */
 
 .social-gallery-section {
-    padding: var(--section-padding-y) 0;
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
     background: var(--color-light-background);
     color: var(--color-light-text);
 }
 
 .social-gallery-layout {
     align-items: start;
-    row-gap: var(--space-8);
+    row-gap: var(--space-6);
 }
 
 .social-gallery-heading {
@@ -646,9 +615,10 @@ p {
 
 .social-gallery-heading h2 {
     position: relative;
-    margin: 0 0 var(--space-4);
+    margin-bottom: var(--space-4);
     padding-bottom: var(--space-4);
-    font-size: 2.4rem;
+    color: var(--color-light-text);
+    font-size: 2rem;
     font-weight: var(--font-weight-black);
     font-style: italic;
     line-height: 1.12;
@@ -683,7 +653,9 @@ p {
     height: var(--gallery-image-height);
     border-radius: var(--radius-sm);
     object-fit: cover;
-    transition: transform var(--transition-standard), box-shadow var(--transition-standard), filter var(--transition-standard);
+    transition:
+        transform var(--transition-standard),
+        box-shadow var(--transition-standard);
 }
 
 .social-gallery-images > .row > div {
@@ -696,27 +668,27 @@ p {
     box-shadow: var(--shadow-card);
 }
 
-/* =========================
-   Footer
-========================= */
+
+/* 10. FOOTER */
 
 .site-footer {
-    padding: var(--section-padding-y) 0;
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
     background: var(--color-background);
     color: var(--color-text-secondary);
 }
 
 .footer-layout {
     align-items: stretch;
-    row-gap: var(--space-10);
-}
-
-.footer-information-grid {
     row-gap: var(--space-8);
 }
 
+.footer-information .row {
+    row-gap: var(--space-6);
+}
+
 .footer-heading h2 {
-    margin: 0 0 var(--space-5);
+    margin: 0 0 var(--space-4);
     color: var(--color-text-primary);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-black);
@@ -744,16 +716,19 @@ p {
     overflow-wrap: anywhere;
 }
 
+/* Desktop social links */
 .social-links {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    width: 96px;
     margin-top: var(--space-5);
 }
 
 .social-link {
     flex: 0 0 44px;
+    width: 44px;
+    max-width: 44px;
+    padding: 0;
 }
 
 .social-link a {
@@ -767,10 +742,7 @@ p {
     background: var(--color-surface);
     color: var(--color-text-primary);
     font-size: 1.1rem;
-    transition: border-color var(--transition-fast),
-        background var(--transition-fast),
-        color var(--transition-fast),
-        transform var(--transition-fast);
+    transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
 .social-link a:hover {
@@ -778,6 +750,20 @@ p {
     border-color: var(--color-accent);
     background: var(--color-accent);
     color: #ffffff;
+}
+
+/* Mobile social links */
+.footer-social-mobile .social-links {
+    width: 100%;
+    margin-top: var(--space-3);
+    margin-right: 0;
+    margin-left: 0;
+    row-gap: var(--space-3);
+}
+
+.footer-social-mobile .social-link {
+    display: flex;
+    justify-content: flex-start;
 }
 
 .footer-map {
@@ -789,194 +775,175 @@ p {
     background: var(--color-surface);
 }
 
-/* =========================
-   Tablet and small desktop
-========================= */
+   /* 11. TABLET :  */
 
-@media (max-width: 991.98px) {
+@media (min-width: 768px) {
+
     :root {
+        --container-inline-space: 1.25rem;
+        --section-padding-y: 4rem;
+        --card-gap: 1.25rem;
+
         --header-height: 80px;
         --logo-width: 82px;
-        --hero-height: 72vh;
+
+        --font-size-3xl: 3rem;
+
         --hero-min-height: 540px;
+        --hero-height: 72vh;
+
         --training-image-height: 340px;
         --gallery-image-height: 160px;
         --map-height: 340px;
     }
 
-    .site-header-inner {
-        gap: var(--space-4);
-    }
-
-    .hero-section {
-        background-position: center;
-    }
-
-    .hero-text {
-        max-width: 760px;
-    }
-
-    .footer-information {
-        min-width: 0;
-    }
-}
-
-/* =========================
-   Mobile
-========================= */
-
-@media (max-width: 767.98px) {
-    :root {
-        --container-inline-space: 1rem;
-        --section-padding-y: 3.5rem;
-        --header-height: 72px;
-        --logo-width: 74px;
-        --hero-height: 74svh;
-        --hero-min-height: 500px;
-        --training-image-height: 340px;
-        --gallery-image-height: 160px;
-        --map-height: 300px;
-    }
-
-    .site-header-inner {
-        min-height: var(--header-height);
-    }
-
-    .hero-section {
-        background-image: linear-gradient(90deg, rgba(5, 8, 13, 0.78), rgba(5, 8, 13, 0.43)), linear-gradient(0deg, rgba(5, 8, 13, 0.45), transparent 65%), url("../images/bg-image/images.avif");
-        background-position: center;
+    .site-header > .container {
+        gap: var(--space-5);
     }
 
     .hero-content {
-        padding-top: var(--space-8);
-        padding-bottom: var(--space-8);
-    }
-
-    .hero-text {
-        text-align: left;
+        padding-top: var(--space-12);
+        padding-bottom: var(--space-12);
     }
 
     .hero-subtitle {
-        max-width: 32rem;
-        margin-bottom: var(--space-4);
-        font-size: var(--font-size-base);
-        line-height: 1.5;
-    }
-
-    .hero-title {
-        margin-bottom: var(--space-6);
-        font-size: 3rem;
-        letter-spacing: -0.045em;
+        font-size: var(--font-size-lg);
     }
 
     .hero-buttons {
-        gap: var(--space-3);
+        gap: var(--space-4);
     }
 
     .hero-button {
-        min-width: 0;
-        min-height: 50px;
-        padding: var(--space-3) var(--space-4);
-    }
-
-    .training-cards {
-        row-gap: var(--space-4);
-    }
-
-    .training-card {
-        padding-right: 0;
-        padding-left: 0;
-    }
-
-    .training-card-image {
-        height: var(--training-image-height);
-    }
-
-    .training-card-overlay {
-        padding: var(--space-5);
+        min-width: 150px;
+        padding-right: var(--space-6);
+        padding-left: var(--space-6);
     }
 
     .training-card-overlay h2 {
-        font-size: 2.25rem;
+        font-size: 2.5rem;
     }
 
     .testimonial-card {
-        min-height: 300px;
-        padding: var(--space-6) var(--space-5);
+        padding: var(--space-8);
+        min-height: 200px;
     }
 
     .testimonial-card p {
-        font-size: var(--font-size-base);
-        line-height: 1.75;
+        font-size: 1.1rem;
     }
 
     .social-gallery-layout {
-        row-gap: var(--space-6);
+        row-gap: var(--space-8);
     }
 
     .social-gallery-heading h2 {
         font-size: 2.25rem;
     }
 
-    .footer-information-grid {
+    .footer-layout {
         row-gap: var(--space-8);
     }
 
-    .footer-heading h2 {
-        margin-bottom: var(--space-4);
-    }
-
-    .footer-map {
-        height: var(--map-height);
+    .footer-information .row {
+        row-gap: var(--space-8);
     }
 }
 
-/* =========================
-   Small mobile screens
-========================= */
+   /* 12. DESKTOP NAVIGATION :  */
 
-@media (max-width: 420px) {
+@media (min-width: 992px) {
+
     :root {
-        --hero-min-height: 470px;
-        --hero-height: 76svh;
-        --training-image-height: 300px;
+        --header-height: 92px;
+        --logo-width: 92px;
+        --navigation-gap: 0.8rem;
+    }
+
+    .site-header > .container {
+        gap: var(--space-5);
+    }
+
+    .desktop-navigation-list {
+        flex-wrap: nowrap;
+        gap: var(--navigation-gap);
+    }
+
+    .desktop-navigation-link {
+        font-size: 0.82rem;
+    }
+
+    .desktop-navigation-link.membership-link {
+        padding-right: var(--space-3);
+        padding-left: var(--space-3);
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        max-width: 1000px;
     }
 
     .hero-buttons {
-        align-items: stretch;
+        gap: var(--space-4);
     }
 
-    .hero-button {
-        flex: 1 1 auto;
-        padding-right: var(--space-3);
-        padding-left: var(--space-3);
-        font-size: var(--font-size-sm);
+    .social-gallery-layout {
+        row-gap: 0;
     }
 
-    .training-card-button {
-        padding-right: var(--space-4);
-        padding-left: var(--space-4);
+    .footer-layout {
+        row-gap: var(--space-6);
     }
 
-    .testimonial-card {
-        min-height: 330px;
-    }
-
-    .social-link a {
-        width: 42px;
-        height: 42px;
+    .footer-information .row {
+        row-gap: var(--space-6);
     }
 }
 
-/* =========================
-   Reduced motion accessibility
-========================= */
+   /* 13. LARGE DESKTOP   */
+
+@media (min-width: 1200px) {
+
+    :root {
+        --section-padding-y: 5rem;
+        --font-size-3xl: 4rem;
+
+        --hero-min-height: 590px;
+        --hero-height: min(82vh, 850px);
+
+        --training-image-height: 380px;
+        --gallery-image-height: 150px;
+        --map-height: 390px;
+    }
+
+    .hero-content {
+        padding-top: var(--space-16);
+        padding-bottom: var(--space-16);
+    }
+
+    .hero-subtitle {
+        margin-bottom: var(--space-5);
+    }
+
+    .hero-title {
+        margin-bottom: var(--space-8);
+    }
+
+    .training-card-overlay h2 {
+        font-size: 3rem;
+    }
+
+    .social-gallery-heading h2 {
+        font-size: 2.4rem;
+    }
+}
+
+
+/* =====================================================
+   15. ACCESSIBILITY — REDUCED MOTION
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
