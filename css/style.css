@@ -383,6 +383,8 @@ h1, h2, h3, h4, h5, h6 {
     min-height: var(--header-height);
     padding: var(--space-4) var(--container-inline-space);
     border-bottom: 1px solid var(--color-border);
+    display: flex ;
+    justify-content: space-between;
 }
 
 #mobile-navigation .offcanvas-body {
