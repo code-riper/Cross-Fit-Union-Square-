@@ -8,7 +8,7 @@ This project demonstrates my **practical frontend development skills**, with a f
 
 ## 🌐 Live Demo
 
-👉[https://gym-finess-2fa7c3.netlify.app]
+👉[https://gym-finess-2fa7c3.netlify.app/]
 
 ---
 
