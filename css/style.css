@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* GLOBAL COLOR  */
 :root {
     /* Colors */
     --color-background: #090b0f;
@@ -80,7 +81,7 @@
     --transition-standard: 280ms ease;
 }
 
-   /* Reset and global defaults */
+   /* global defaults */
 
 *,
 *::before,
@@ -561,11 +562,7 @@ p {
     filter: none;
 }
 */
-
-/* =========================
-   Social media gallery
-========================= */
-
+   /* Social media gallery */
 .social-gallery-section {
     padding: var(--section-padding-y) 0;
     background: var(--color-light-background);
@@ -888,9 +885,7 @@ p {
     }
 }
 
-/* =========================
-   Reduced motion accessibility
-========================= */
+   /* Reduced motion accessibility */
 
 @media (prefers-reduced-motion: reduce) {
     *,
