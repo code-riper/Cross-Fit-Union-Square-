@@ -83,12 +83,6 @@
 
    /* global defaults */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
